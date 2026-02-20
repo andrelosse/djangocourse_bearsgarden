@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+    <h1>✍️ Edit Bakery Item</h1>
+    <a href='{% url "index" %}'>← Back to Home</a>
+</section>
+
+<form action='{% url "edit_order" item.id %}' method='post'>
+    {% csrf_token %}
+    {{ itemform }}
+    <input type='submit' value='Update Item'>
+
+    {% if note %}
+        <div class="note">{{ note }}</div>
+    {% endif %}
+</form>
+{% endblock %}

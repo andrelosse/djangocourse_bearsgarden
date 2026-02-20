@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+    <h1>🛒 Multiple Items Order</h1>
+    <a href='{% url "index" %}'>← Back to Home</a>
+</section>
+
+<form action='{% url "order_multiple" %}' method='post'>
+    {% csrf_token %}
+    {{ formset.management_form }}
+
+    {% for form in formset %}
+        <section style="margin: 20px auto;">
+            <h3>Item {{ forloop.counter }}</h3>
+            {{ form }}
+        </section>
+    {% endfor %}
+
+    <section>
+        <input type='submit' value='Complete Order'>
+        {% if note %}
+            <div class="note" style="margin-top: 20px;">{{ note }}</div>
+        {% endif %}
+    </section>
+</form>
+{% endblock %}

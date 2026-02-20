@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+    <h1>🛒 Order a Bakery Item</h1>
+    <a href='{% url "index" %}'>← Back to Home</a>
+
+    <form action='{% url "order" %}' method='post'>
+        {% csrf_token %}
+        {{ itemform }}
+        <input type='submit' value='Place Order'>
+
+        {% if note %}
+            <div class="note">{{ note }}</div>
+        {% endif %}
+
+        {% if created_item_pk %}
+            <a href="{% url 'edit_order' created_item_pk %}" class="nav-links" style="margin-top: 20px;">Edit This Order</a>
+        {% endif %}
+    </form>
+
+    <h3>Want Multiple Items?</h3>
+    <form action='{% url "order_multiple" %}' method='get'>
+        {{ multiple_form }}
+        <input type='submit' value='Continue to Cart'>
+    </form>
+</section>
+{% endblock %}

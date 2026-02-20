@@ -1,0 +1,253 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
+    color: #4a4a4a;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+section {
+    max-width: 900px;
+    width: 100%;
+    background: linear-gradient(to bottom, #fff9f0, #fdf5ed);
+    border: 2px solid #d4a574;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    padding: 40px;
+    margin: 20px auto;
+}
+
+h1 {
+    color: #5d4e37;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+h2 {
+    color: #8b6f47;
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #d4a574;
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: #8b6f47;
+    font-size: 1.3em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    color: #5d4e37;
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+p {
+    margin-bottom: 15px;
+    text-align: justify;
+    color: #5a5a5a;
+    font-size: 1em;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+li {
+    padding: 8px 0;
+    padding-left: 30px;
+    position: relative;
+    color: #5a5a5a;
+}
+
+li:before {
+    content: "🧁";
+    position: absolute;
+    left: 0;
+    color: #d4a574;
+}
+
+a {
+    color: #8b6f47;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #5d4e37;
+    text-decoration: underline;
+}
+
+form {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: #faf6f1;
+    border-left: 4px solid #d4a574;
+    border-radius: 8px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #5d4e37;
+    font-weight: 600;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #d4a574;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1em;
+    background-color: white;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+form input[type="submit"],
+form button {
+    background: linear-gradient(135deg, #d4a574 0%, #b8956f 100%);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.05em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+form input[type="submit"]:hover,
+form button:hover {
+    background: linear-gradient(135deg, #b8956f 0%, #996633 100%);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.note {
+    color: #27ae60;
+    font-weight: bold;
+    background-color: #e8f8f5;
+    padding: 12px;
+    border-left: 4px solid #27ae60;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.error {
+    color: #e74c3c;
+    font-weight: bold;
+    background-color: #fadbd8;
+    padding: 12px;
+    border-left: 4px solid #e74c3c;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    background-color: #f5e6d3;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: 1px solid #d4a574;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: #d4a574;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #d4a574;
+}
+
+table th {
+    background-color: #f5e6d3;
+    color: #5d4e37;
+    font-weight: 600;
+}
+
+table tr:hover {
+    background-color: #faf6f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    section {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+    }
+}
