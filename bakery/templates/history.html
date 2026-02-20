@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
+{% block title %}Order History - Bear's Garden{% endblock %}
+
 {% block content %}
-<section>
+<div class="card">
     <h1>📄 Your Order History</h1>
-    
+
     {% if items %}
-        <table>
+        <table class="history-table">
             <thead>
                 <tr>
                     <th>Item Name</th>
@@ -20,18 +22,17 @@
                         <td>{{ item.name }}</td>
                         <td>{{ item.category }}</td>
                         <td>${{ item.price }}</td>
-                        <td><a href="{% url 'edit_order' item.id %}">Edit</a></td>
+                        <td><a href="{% url 'edit_order' item.id %}" class="btn" style="padding: 5px 10px; font-size: 0.9rem;">Edit</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% else %}
-        <p style="text-align: center; font-style: italic; color: #8b6f47;">You haven't placed any orders yet. Time to treat yourself! 😋</p>
+        <p style="text-align: center; margin-top: 30px;">You haven't placed any orders yet. Time to treat yourself! 😋</p>
     {% endif %}
     
-    <div class="nav-links">
-        <a href="{% url 'index' %}">← Back to Home</a>
-        <a href="{% url 'order' %}">📝 Place New Order</a>
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{% url 'order' %}" class="btn">📝 Place a New Order</a>
     </div>
-</section>
+</div>
 {% endblock %}

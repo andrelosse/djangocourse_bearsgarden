@@ -1,22 +1,20 @@
 {% extends 'base.html' %}
 
+{% block title %}Register - Bear's Garden{% endblock %}
+
 {% block content %}
-<section>
+<div class="card">
     <h1>✍️ Create Your Account</h1>
-    <p style="text-align: center; margin-bottom: 20px;">Join Bear's Garden community and start ordering fresh treats today!</p>
+    <p style="text-align: center; margin-bottom: 30px;">Join Bear's Garden to start ordering fresh treats today!</p>
     
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Create Account</button>
+        <button type="submit" class="btn" style="width: 100%;">Create Account</button>
     </form>
     
     <p style="text-align: center; margin-top: 20px;">
         Already have an account? <a href="{% url 'login' %}">Sign in here</a>
     </p>
-    
-    <p style="text-align: center;">
-        <a href="{% url 'index' %}">← Back to Home</a>
-    </p>
-</section>
+</div>
 {% endblock %}

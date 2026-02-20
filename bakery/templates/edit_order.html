@@ -1,18 +1,43 @@
 {% extends 'base.html' %}
 
+{% block title %}Edit Order - Bear's Garden{% endblock %}
+
 {% block content %}
-<section>
-    <h1>✍️ Edit Bakery Item</h1>
-    <a href='{% url "index" %}'>← Back to Home</a>
-</section>
+<div class="card">
+    <h1>✍️ Edit Your Order</h1>
 
-<form action='{% url "edit_order" item.id %}' method='post'>
-    {% csrf_token %}
-    {{ itemform }}
-    <input type='submit' value='Update Item'>
+    <form action="{% url 'edit_order' item.id %}" method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ itemform.name.id_for_label }}">{{ itemform.name.label }}</label>
+            {{ itemform.name }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ itemform.description.id_for_label }}">{{ itemform.description.label }}</label>
+            {{ itemform.description }}
+        </div>
 
-    {% if note %}
-        <div class="note">{{ note }}</div>
-    {% endif %}
-</form>
+        <div class="form-group">
+            <label for="{{ itemform.price.id_for_label }}">{{ itemform.price.label }}</label>
+            {{ itemform.price }}
+        </div>
+
+        <div class="form-group">
+            <label>{{ itemform.category.label }}</label>
+            <ul class="radio-select">
+                {% for radio in itemform.category %}
+                <li>{{ radio }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <button type="submit" class="btn" style="width: 100%;">Update Item</button>
+
+        {% if note %}
+            <div class="note">{{ note }}</div>
+        {% endif %}
+    </form>
+</div>
 {% endblock %}

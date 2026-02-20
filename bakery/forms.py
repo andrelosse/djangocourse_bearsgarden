@@ -2,16 +2,21 @@ from django import forms
 from .models import BakeryItem, Category
 
 class BakeryItemForm(forms.ModelForm):
-    category = forms.ModelChoiceField(queryset=Category.objects, empty_label=None, widget=forms.RadioSelect)
+    category = forms.ModelChoiceField(
+        queryset=Category.objects,
+        empty_label=None,
+        widget=forms.RadioSelect(attrs={'class': 'radio-select'})
+    )
 
     class Meta:
         model = BakeryItem
         fields = ['name', 'description', 'price', 'category']
         labels = {
-            'name': 'Item Name: ',
-            'description': 'Description: ',
-            'price': 'Price: ',
-            'category': 'Category: '}
+            'name': 'Item Name',
+            'description': 'Description',
+            'price': 'Price',
+            'category': 'Category'
+        }
 
 class MultipleItems(forms.Form):
-    number = forms.IntegerField(min_value=2, max_value=5)
+    number = forms.IntegerField(min_value=2, max_value=5, label="Number of Items")

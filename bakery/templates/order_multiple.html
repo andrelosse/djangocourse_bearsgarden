@@ -1,27 +1,50 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<section>
-    <h1>🛒 Multiple Items Order</h1>
-    <a href='{% url "index" %}'>← Back to Home</a>
-</section>
+{% block title %}Multiple Orders - Bear's Garden{% endblock %}
 
-<form action='{% url "order_multiple" %}' method='post'>
+{% block content %}
+<div class="card">
+    <h1>🛒 Multiple Items Order</h1>
+    <p>Use this page to order several bakery items at once.</p>
+
+    <form action="{% url 'order_multiple' %}" method="get" class="form-inline">
+        <div class="form-group">
+            <label for="id_number">How many items would you like to order?</label>
+            <input type="number" name="number" value="{{ number_items|default:2 }}" min="2" max="5" required id="id_number">
+        </div>
+        <button type="submit" class="btn">Set Number</button>
+    </form>
+</div>
+
+<form action="{% url 'order_multiple' %}" method="post">
     {% csrf_token %}
     {{ formset.management_form }}
 
     {% for form in formset %}
-        <section style="margin: 20px auto;">
+        <div class="card">
             <h3>Item {{ forloop.counter }}</h3>
-            {{ form }}
-        </section>
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {% if field.name == 'category' %}
+                        <ul class="radio-select">
+                            {% for radio in field %}
+                            <li>{{ radio }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
     {% endfor %}
 
-    <section>
-        <input type='submit' value='Complete Order'>
+    <div class="card" style="text-align: center;">
+        <button type="submit" class="btn" style="width: 100%;">Complete Order</button>
         {% if note %}
             <div class="note" style="margin-top: 20px;">{{ note }}</div>
         {% endif %}
-    </section>
+    </div>
 </form>
 {% endblock %}

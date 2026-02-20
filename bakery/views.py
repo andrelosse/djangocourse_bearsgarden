@@ -34,10 +34,10 @@ def order(request):
 @login_required
 def order_multiple(request):
     number_items = 2
-
-    filled_number = MultipleItems(request.GET)
-    if filled_number.is_valid():
-        number_items = filled_number.cleaned_data['number']
+    if request.method == 'GET':
+        filled_number = MultipleItems(request.GET)
+        if filled_number.is_valid():
+            number_items = filled_number.cleaned_data['number']
     
     BakeryItemFormSet = formset_factory(BakeryItemForm, extra=number_items)
     formset = BakeryItemFormSet()
@@ -58,7 +58,7 @@ def order_multiple(request):
         return render(request, 'order_multiple.html', {'note':note, 'formset':filled_formset})
     
     else:
-        return render(request, 'order_multiple.html', {'formset':formset})
+        return render(request, 'order_multiple.html', {'formset':formset, 'number_items': number_items})
 
 @login_required
 def edit_order(request, pk):

@@ -1,21 +1,32 @@
 {% extends 'base.html' %}
 
+{% block title %}Login - Bear's Garden{% endblock %}
+
 {% block content %}
-<section>
+<div class="card">
     <h1>🔐 Welcome Back</h1>
-    
+    <p style="text-align: center; margin-bottom: 30px;">Sign in to continue to Bear's Garden.</p>
+
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign In</button>
+        <div class="form-group">
+            <label for="id_username">Username</label>
+            {{ form.username }}
+        </div>
+        <div class="form-group">
+            <label for="id_password">Password</label>
+            {{ form.password }}
+        </div>
+
+        {% if form.errors %}
+            <p class="error">Your username and password didn't match. Please try again.</p>
+        {% endif %}
+
+        <button type="submit" class="btn" style="width: 100%;">Sign In</button>
     </form>
-    
+
     <p style="text-align: center; margin-top: 20px;">
         Don't have an account? <a href="{% url 'register' %}">Create one here</a>
     </p>
-    
-    <p style="text-align: center;">
-        <a href="{% url 'index' %}">← Back to Home</a>
-    </p>
-</section>
+</div>
 {% endblock %}
